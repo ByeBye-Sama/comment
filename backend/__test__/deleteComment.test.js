@@ -5,34 +5,29 @@ import mockService from './mocks/mockService'
 import typeDefs from '../schema';
 
 
-const allCommentsTestCase = {
-  id: 'All comments with the user who wrote it',
+const deleteCommentTestCase = {
+  id: 'Delete one comment',
   query: `
-    query{
-      comments {
-        id
-        content
-      }
+    mutation{
+      deleteComment(
+        id: 1
+      )
     }
     `,
   variables: {},
 
-  context: { db: mockService },
+  context: { db: { comment: mockService } },
 
   expected: {
     data: {
-      comments: [
-        { id: '1', content: 'Hello' },
-        { id: '2', content: 'Bye' }]
+      deleteComment: 1
     }
   }
 }
 
 describe('Schema', () => {
-  const cases = [allCommentsTestCase]
+  const cases = [deleteCommentTestCase]
   const schema = makeExecutableSchema({ typeDefs, resolvers })
-  /* console.log('defs',typeDefs)
-  console.log('reso',resolvers) */
   cases.forEach(obj => {
     const { id, query, variables, context, expected } = obj
     test(`${id}`, async () => {

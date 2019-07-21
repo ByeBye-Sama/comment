@@ -34,7 +34,7 @@ const resolvers = {
       db.comment.destroy({
         where: {
           id: id
-        }
+        },
       })
   }
 };

@@ -47,6 +47,6 @@
   },
   "jest": {
     "collectCoverage": true,
-    "testRegex": "(/test/.*-test|(\\.|/)(test|spec))\\.jsx?$"
+    "testRegex": "(/__test__/.*-test|(\\.|/)(test|spec))\\.jsx?$"
   }
 }

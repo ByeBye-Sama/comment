@@ -2,7 +2,7 @@ node_modules
 
 #backend
 .vscode/
-backend/config
+.env
 
 # Icon must end with two \r
 Icon

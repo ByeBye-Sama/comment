@@ -6,7 +6,7 @@ function Footer() {
   return (
     <StyleFooter>
       <ContainerCenter>
-        @Copyright 2019 | Joaquin Concha
+        @Copyright {new Date().getFullYear()} | Joaquin Concha
       </ContainerCenter>
     </StyleFooter>
   )

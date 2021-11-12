@@ -13,7 +13,7 @@ import { App } from './App';
 const AUTH_TOKEN = 'auth-token';
 
 const httpLink = createHttpLink({
-  uri: 'https://comment-server-test.herokuapp.com/graphql'
+  uri: process.env.API_ROOT
 });
 
 const authLink = setContext((_, { headers }) => {

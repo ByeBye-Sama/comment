@@ -8,25 +8,39 @@ import { CommentSection, CommentDiv, CommentContent, CommentName } from './comme
 function UserComment() {
 
   const { loading, data } = allCommentsQuery();
+  
   const deleteComment = deleteCommentMutation();
-  if (loading) return <p>comments loading...</p>;
+
+  if(loading){
+    return <p>comments loading...</p>
+  }
+
+  const renderContent = () => {
+    if(data === undefined){
+      return <p>no comments now...</p>
+    }
+
+    return (
+      data.comments.map(comment => (
+        <div key={comment.id}>
+          <div key={comment.user.id}>
+            <CommentName>{comment.user.name} says:</CommentName>
+
+          </div>
+          <CommentDiv>
+            <CommentContent>{comment.content}</CommentContent>
+            <Button onClick={() => deleteComment(comment.id)}>delete</Button>
+          </CommentDiv>
+
+        </div>
+      )).reverse()
+    )
+  }
 
   return (
     <Fragment>
       <CommentSection>
-        {data.comments.map(comment => (
-          <div key={comment.id}>
-            <div key={comment.user.id}>
-              <CommentName>{comment.user.name} says:</CommentName>
-
-            </div>
-            <CommentDiv>
-              <CommentContent>{comment.content}</CommentContent>
-              <Button onClick={() => deleteComment(comment.id)}>delete</Button>
-            </CommentDiv>
-
-          </div>
-        )).reverse()}
+        {renderContent()}
       </CommentSection>
     </Fragment>
   )

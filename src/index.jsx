@@ -16,6 +16,8 @@ const httpLink = createHttpLink({
   uri: process.env.API_ROOT
 });
 
+console.log('process.env.API_ROOT', process.env.API_ROOT)
+
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem(AUTH_TOKEN);
 

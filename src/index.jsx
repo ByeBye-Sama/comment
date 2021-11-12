@@ -13,10 +13,8 @@ import { App } from './App';
 const AUTH_TOKEN = 'auth-token';
 
 const httpLink = createHttpLink({
-  uri: process.env.API_ROOT
+  uri: 'https://comment-api-byebye.herokuapp.com/graphql'
 });
-
-console.log('process.env.API_ROOT', process.env.API_ROOT)
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem(AUTH_TOKEN);
